@@ -7,7 +7,7 @@ namespace UniversityRegistrar.Models
     {
       this.Students = new HashSet<CourseStudent>();
     }
-    public int CourseID {get;set;}
+    public int CourseId {get;set;}
     public int CourseNumber {get;set;}
     public string CourseName {get;set;}
     public virtual ICollection<CourseStudent> Students {get;set;}
