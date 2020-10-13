@@ -13,7 +13,7 @@
   <ul>
     @foreach(Department department in Model)
     {
-      <li>@department.DepartmentName @department.DepartmentHead | <a href="/departments/details/@department.DepartmentId">details</a></li>
+      <li>@department.DepartmentName | @department.DepartmentHead | <a href="/departments/details/@department.DepartmentId">details</a></li>
     }
   </ul>
   <p>@Html.ActionLink("Add a Department","Create")</p>

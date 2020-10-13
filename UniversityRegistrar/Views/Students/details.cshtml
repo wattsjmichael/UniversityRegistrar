@@ -19,6 +19,15 @@ else
   @foreach (CourseStudent courseStudent in Model.Courses)
   {
     <li>@courseStudent.Course.CourseName | @courseStudent.Course.CourseNumber</li>
+    @if (courseStudent.Completed == true)
+    {
+      <p>COMPLETE</p>
+    }
+    @using (Html.BeginForm("CompleteCourse", "Students"))
+    {
+      @Html.Hidden("CourseStudentId", @courseStudent.CourseStudentId)
+      <input type="submit" value="Completed"/>
+    }
     @using (Html.BeginForm("DeleteCourse", "Students"))
     {
       @Html.Hidden("CourseStudentId", @courseStudent.CourseStudentId)
