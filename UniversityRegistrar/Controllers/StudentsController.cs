@@ -97,5 +97,26 @@ namespace UniversityRegistrar.Controllers
             _db.SaveChanges();
             return RedirectToAction("Index");
         }
+        [HttpPost]
+        public ActionResult DeleteCourse(int CourseStudentId)
+        {
+            CourseStudent joinEntry = _db.CourseStudent.FirstOrDefault(entry => entry.CourseStudentId == CourseStudentId);
+            _db.CourseStudent.Remove(joinEntry);
+            _db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+        public ActionResult AddDepartment(int id)
+        {
+            Student thisStudent = _db.Students.FirstOrDefault(x => x.StudentId == id);
+            ViewBag.Departments = new SelectList(_db.Departments, "DepartmentId", "DepartmentName");
+            return View(thisStudent);
+        }
+        [HttpPost]
+        public ActionResult AddDepartment(Student student)
+        {
+            _db.Entry(student).State = EntityState.Modified;
+            _db.SaveChanges();
+            return View("Index", student);
+        }
     }
 }

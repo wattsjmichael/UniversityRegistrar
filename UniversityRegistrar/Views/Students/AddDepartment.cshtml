@@ -1,0 +1,17 @@
+@{
+  Layout = "_Layout";
+}
+
+@model UniversityRegistrar.Models.Student
+<div class="container">
+  @using (Html.BeginForm())
+{
+  @Html.HiddenFor(model => model.StudentId);
+  @Html.Label("Select department")
+  @Html.DropDownList("DepartmentId")
+  <button type="submit" class="btn btn-dark">Add Department</button>
+  <button type="button" class="btn btn-dark" onclick='window.location.href="/students/details/@Model.StudentId"'>Cancel</button>
+}
+
+</div>
+

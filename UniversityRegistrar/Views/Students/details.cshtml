@@ -9,9 +9,23 @@
 <hr />
 <h4>@Html.DisplayNameFor(model => model.DateOfEnrollment): @Html.DisplayFor(model => model.DateOfEnrollment)</h4>
 
-@foreach (CourseStudent courseStudent in Model.Courses)
+@if(@Model.Courses.Count == 0)
 {
-  <p>@courseStudent.Course.CourseName | @courseStudent.Course.CourseNumber</p>
+  <p>This student has no courses</p>
+}
+else
+{
+  <ul>
+  @foreach (CourseStudent courseStudent in Model.Courses)
+  {
+    <li>@courseStudent.Course.CourseName | @courseStudent.Course.CourseNumber</li>
+    @using (Html.BeginForm("DeleteCourse", "Students"))
+    {
+      @Html.Hidden("CourseStudentId", @courseStudent.CourseStudentId)
+      <input type="submit" value="Remove"/>
+    }
+  }
+  </ul>
 }
 
 <p>@Html.ActionLink("Edit Student", "Edit", new { id = Model.StudentId })</p>

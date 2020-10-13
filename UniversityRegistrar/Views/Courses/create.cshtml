@@ -12,8 +12,8 @@
   @Html.LabelFor(model => model.CourseNumber)
   @Html.TextBoxFor(model => model.CourseNumber, new { @required = "required"})
 
-  @* @Html.Label("Select course")
-  @Html.DropDownList(" CourseId") *@
+  @Html.Label("Select department")
+  @Html.DropDownList("DepartmentId")
   <input type="submit" value="Add new Course" class="btn btn-dark" />
 }
 

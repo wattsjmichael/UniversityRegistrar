@@ -4,7 +4,7 @@
 
 @model UniversityRegistrar.Models.Course
 
-<h4>Edit a new Student</h4>
+<h4>Edit the Course</h4>
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.CourseName)
@@ -12,8 +12,8 @@
   @Html.LabelFor(model => model.CourseNumber)
   @Html.TextBoxFor(model => model.CourseNumber, new { @required = "required"})
 
-  @* @Html.Label("Select course")
-  @Html.DropDownList(" CourseId") *@
+  @Html.Label("Select Department")
+  @Html.DropDownList("DepartmentId")
   <input type="submit" value="Edit Course" class="btn btn-dark" />
 }
 

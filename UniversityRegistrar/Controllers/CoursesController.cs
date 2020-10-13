@@ -22,7 +22,7 @@ namespace UniversityRegistrar.Controllers
         }
         public ActionResult Create()
         {
-            ViewBag.StudentId = new SelectList(_db.Students, "StudentId", "Name");
+            ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName");
             return View();
         }
         [HttpPost]
@@ -45,9 +45,9 @@ namespace UniversityRegistrar.Controllers
             return View(thisCourse);
         }
         public ActionResult Edit(int id)
-        {
+        {                    
             Course thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
-            ViewBag.StudentId = new SelectList(_db.Students, "StudentId", "Name");
+            ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName");
             return View(thisCourse);
         }
         [HttpPost]
