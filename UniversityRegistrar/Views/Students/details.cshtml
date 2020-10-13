@@ -5,7 +5,7 @@
 @model UniversityRegistrar.Models.Student
 @using UniversityRegistrar.Models
 
-<h2>@Html.DisplayFor(model => model.Name)</h2>
+<h2>@Html.DisplayFor(model => model.Name) | Department: @Html.DisplayFor(model => model.Department.DepartmentName) </h2>
 <hr />
 <h4>@Html.DisplayNameFor(model => model.DateOfEnrollment): @Html.DisplayFor(model => model.DateOfEnrollment)</h4>
 
@@ -31,4 +31,5 @@ else
 <p>@Html.ActionLink("Edit Student", "Edit", new { id = Model.StudentId })</p>
 <p>@Html.ActionLink("Delete Student", "Delete", new { id = Model.StudentId })</p>
 <p>@Html.ActionLink("Add Course", "AddCourse",  new { id = Model.StudentId })</p>
+<p>@Html.ActionLink("Add Major", "AddDepartment", new { id = Model.StudentId })</p>
 <p>@Html.ActionLink("Back to List of Students", "Index")</p>

@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+@using UniversityRegistrar.Models;
+<div class="container">
+  <div class="jumbotron">
+    <h1>List of Departments</h1>
+  </div>
+  @if(Model.Count == 0)
+  {
+    <p>There are no Departments added.</p>
+  }
+  <ul>
+    @foreach(Department department in Model)
+    {
+      <li>@department.DepartmentName @department.DepartmentHead | <a href="/departments/details/@department.DepartmentId">details</a></li>
+    }
+  </ul>
+  <p>@Html.ActionLink("Add a Department","Create")</p>
+  <p>@Html.ActionLink("Home","Index","Home")</p>
+
+</div>

@@ -41,17 +41,18 @@ namespace UniversityRegistrar.Controllers
             Course thisCourse = _db.Courses
             .Include(course => course.Students)
             .ThenInclude(join => join.Student)
+            .Include(course => course.Department)
             .FirstOrDefault(course => course.CourseId == id);
             return View(thisCourse);
         }
         public ActionResult Edit(int id)
         {                    
             Course thisCourse = _db.Courses.FirstOrDefault(course => course.CourseId == id);
-            ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName");
+            ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName", thisCourse.DepartmentId);
             return View(thisCourse);
         }
         [HttpPost]
-        public ActionResult Edit(Course course, int id)
+        public ActionResult Edit(Course course)
         {
             // if (CourseId != 0)
             // {

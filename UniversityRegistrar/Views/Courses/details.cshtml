@@ -5,7 +5,7 @@
 @model UniversityRegistrar.Models.Course
 @using UniversityRegistrar.Models
 
-<h2>@Html.DisplayFor(model => model.CourseName)</h2>
+<h2>@Html.DisplayFor(model => model.CourseName) | Department: @Html.DisplayFor(model => model.Department.DepartmentName) </h2>
 <hr />
 <h4>@Html.DisplayNameFor(model => model.CourseName): @Html.DisplayFor(model => model.CourseNumber)</h4>
 

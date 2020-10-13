@@ -1,0 +1,54 @@
+@{
+  Layout = "_Layout";
+}
+
+@model UniversityRegistrar.Models.Department
+@using UniversityRegistrar.Models
+
+<h2>@Html.DisplayFor(model => model.DepartmentName)
+<hr />
+<h4>@Html.DisplayNameFor(model => model.DepartmentHead): @Html.DisplayFor(model => model.DepartmentHead)</h4>
+
+@if(@Model.Students.Count == 0)
+{
+  <p>This department does not contain any students</p>
+}
+else
+{
+  <ul>
+    <p>Students:</p>
+    @foreach (Student student in Model.Students)
+    {
+      <li>@student.Name | @student.DateOfEnrollment</li>
+      @* @using (Html.BeginForm("DeleteStudent", "Courses"))
+      {
+        @Html.Hidden("CourseStudentId", @courseStudent.CourseStudentId)
+        <input type="submit" value="Remove"/>
+      } *@
+    }
+  </ul>
+}
+
+@if(@Model.Courses.Count == 0)
+{
+<p>This department does not contain any courses</p>
+}
+else
+{
+  <ul>
+    <p>Courses:</p>
+    @foreach (Course course in Model.Courses)
+    {
+      <li>@course.CourseName| @course.CourseNumber</li>
+      @* @using (Html.BeginForm("DeleteStudent", "Courses"))
+      {
+        @Html.Hidden("CourseStudentId", @courseStudent.CourseStudentId)
+        <input type="submit" value="Remove"/>
+      } *@
+    }
+  </ul>
+}
+
+<p>@Html.ActionLink("Edit Department", "Edit", new { id = Model.DepartmentId })</p>
+<p>@Html.ActionLink("Delete Department", "Delete", new { id = Model.DepartmentId })</p>
+<p>@Html.ActionLink("Back to List of Departments", "Index")</p>

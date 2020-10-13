@@ -18,6 +18,9 @@
   @Html.LabelFor(model => model.DateOfEnrollment)
   @Html.EditorFor(model => model.DateOfEnrollment)
 
+  @Html.Label("Select Department")
+  @Html.DropDownList("DepartmentId")
+
   <input type="submit" value="Save" />
 }
 

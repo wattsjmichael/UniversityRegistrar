@@ -29,6 +29,7 @@ namespace UniversityRegistrar.Controllers
         [HttpPost]
         public ActionResult Create(Student student, int CourseId)
         {
+            student.DepartmentId = 3;
             _db.Students.Add(student);
             if (CourseId != 0)
             {
@@ -42,13 +43,14 @@ namespace UniversityRegistrar.Controllers
             Student thisStudent = _db.Students
             .Include(student => student.Courses)
             .ThenInclude(join => join.Course)
+            .Include(student => student.Department)
             .FirstOrDefault(student => student.StudentId == id);
             return View(thisStudent);
         }
         public ActionResult Edit(int id)
         {
             Student thisStudent = _db.Students.FirstOrDefault(student => student.StudentId == id);
-            ViewBag.CourseId = new SelectList(_db.Courses, "CourseId", "CourseName");
+            ViewBag.DepartmentId = new SelectList(_db.Departments, "DepartmentId", "DepartmentName",thisStudent.DepartmentId);
             return View(thisStudent);
         }
         [HttpPost]
