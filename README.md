@@ -2,7 +2,7 @@
 
 #### _Epicodus Exercise C# Database Many-to-Many, 10/12/2020_
 
-#### By _**Johnny Duverseau, Joseph Nilles, and William Donovan-Seid**_
+#### By _**Johnny Duverseau, Joseph Nilles, Michael Watts and William Donovan-Seid**_
 
 ## Description
 
